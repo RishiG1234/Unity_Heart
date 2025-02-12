@@ -20,13 +20,15 @@ public class Heart : MonoBehaviour
         for(int i = 0; i < pointsCount; i++) {
             float t = Mathf.PI * 2 * i / pointsCount;
             float x = 16 * Mathf.Pow(Mathf.Sin(t), 3);
-            float y = 13 * Mathf.Cos(t) - 5 * Mathf.Cos(2*t) - 2 * Mathf.Cos(3*t) - Math.Cos(4*t);
+            float y = 13 * Mathf.Cos(t) - 5 * Mathf.Cos(2*t) - 2 * Mathf.Cos(3*t) - Mathf.Cos(4*t);
             float z = 0;
 
             Vector3 position = new Vector3(x, y, z) * scale;
-            heartPoints[i] = Instantiate(heartPrefab, position, Quaterion.identity, transform);
+            heartPoints[i] = Instantiate(heartPrefab, position, Quaternion.identity, transform);
             baseYPositions[i] = position.y;
         }
+
+        StartCoroutine(Animate());
 
     }
 
